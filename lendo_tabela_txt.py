@@ -28,7 +28,7 @@ l_valores_iptu=[]
 valores_tcl=[]
 l_valores_tcl=[]
 
-with open ('iptu_2025_fase1.txt','r') as arq:
+with open ('iptu_recorte_fase1.txt','r') as arq:
     for linha in arq:
         
         nova = linha.strip().split('\t')

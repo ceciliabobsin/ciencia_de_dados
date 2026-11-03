@@ -70,20 +70,6 @@ with open ('iptu_2025_fase1.txt','r') as arq:
         
         #print(f'Divisão: {divisao} | Bairro: {bairro} | Setor: {setor} | Quarteirão: {quarteirao} | CEP: {cep} | Num do Endereço: {num_end} | Metragem Testada: {metragem_testada} | Área Real: {areas_reais} | Área Construída: {areas_construidas} | Área Corrigida: {areas_corrigidas} | Valor do Terreno: {valores_terreno} | Valor das Construções: {valores_construidos} | Valor do Imóvel: {valores_imovel} | Alíquota do IPTU: {aliquota_iptu} | Valor do IPTU: {valores_iptu} | Valor do TCL: {valores_tcl}')
 
-minimo_divisao = min(divisoes)
-maximo_divisao = max(divisoes)
-media_divisao = sum(divisoes) / len(divisoes)
-minimo_setor = min(setores)
-maximo_setor = max(setores)
-media_setor = sum(setores) / len(setores)
-minimo_quarteirao = min(quarteiroes)
-maximo_quarteirao = max(quarteiroes)
-media_quarteirao = sum(quarteiroes) / len(quarteiroes)
-minimo_cep = min(ceps)
-maximo_cep = max(ceps)
-media_cep = sum(ceps) / len(ceps)
-minimo_num_endereco = min(num_enderecos)
-maximo_num_endereco = max(num_enderecos)
 media_num_endereco = sum(num_enderecos) / len(num_enderecos)
 minimo_area_testada = min(l_mt_testada)
 maximo_area_testada = max(l_mt_testada)
@@ -116,26 +102,6 @@ minimo_valor_tcl = min(l_valores_tcl)
 maximo_valor_tcl = max(l_valores_tcl)
 media_valor_tcl = sum(l_valores_tcl) / len(l_valores_tcl)
 
-ordenados_divisao = sorted(divisoes)
-n = len(ordenados_divisao)
-if n % 2 == 1:
-    mediana_divisao = ordenados_divisao[n // 2]
-else:
-    mediana_divisao = (ordenados_divisao[n // 2 - 1] + ordenados_divisao[n // 2]) / 2
-
-ordenados_setor = sorted(setores)
-n = len(ordenados_setor)
-if n % 2 == 1:
-    mediana_setor = ordenados_setor[n // 2]
-else:
-    mediana_setor = (ordenados_setor[n // 2 - 1] + ordenados_setor[n // 2]) / 2
-
-ordenados_quarteirao = sorted(quarteiroes)
-n = len(ordenados_quarteirao)
-if n % 2 == 1:
-    mediana_quarteirao = ordenados_quarteirao[n // 2]
-else:
-    mediana_quarteirao = (ordenados_quarteirao[n // 2 - 1] + ordenados_quarteirao[n // 2]) / 2
 
 ordenados_area_testada = sorted(l_mt_testada)
 n = len(ordenados_area_testada)
@@ -206,24 +172,6 @@ if n % 2 == 1:
     mediana_valor_tcl = ordenados_valor_tcl[n // 2]
 else:
     mediana_valor_tcl = (ordenados_valor_tcl[n // 2 - 1] + ordenados_valor_tcl[n // 2]) / 2
-
-soma_divisao = 0
-for valor in divisoes:
-    soma_divisao += (valor - media_divisao) ** 2
-variancia_divisao = soma_divisao / len(divisoes)
-desvio_padrao_divisao = variancia_divisao ** 0.5
-
-soma_setor = 0
-for valor in setores:
-    soma_setor += (valor - media_setor) ** 2
-variancia_setor = soma_setor / len(setores)
-desvio_padrao_setor = variancia_setor ** 0.5
-
-soma_quarteirao = 0
-for valor in quarteiroes:
-    soma_quarteirao += (valor - media_quarteirao) ** 2
-variancia_quarteirao = soma_quarteirao / len(quarteiroes)
-desvio_padrao_quarteirao = variancia_quarteirao ** 0.5
 
 soma_areas_testadas = 0
 for valor in l_mt_testada:
@@ -434,12 +382,12 @@ qtd_valores_tcl = len(set(l_valores_tcl))
 
 
 print(f'Total de linhas: {total_linhas}')
-print(f'Divisão - Qtd distintos: {qtd_divisoes}, Mínimo: {minimo_divisao}, Máximo: {maximo_divisao}, Média: {media_divisao:.2f}, Mediana: {mediana_divisao}, Moda: {moda_divisao}, Desvio Padrão: {desvio_padrao_divisao:.2f}')
+print(f'Divisão - Qtd distintos: {qtd_divisoes}, Moda: {moda_divisao}')
 print(f'Bairro - Qtd distintos: {qtd_bairros}, Moda: {moda_bairro}')
-print(f'Setor - Qtd distintos: {qtd_setores}, Mínimo: {minimo_setor}, Máximo: {maximo_setor}, Média: {media_setor:.2f}, Mediana: {mediana_setor}, Moda: {moda_setor}, Desvio Padrão: {desvio_padrao_setor:.2f}')
-print(f'Quarteirão - Qtd distintos: {qtd_quarteiroes}, Mínimo: {minimo_quarteirao}, Máximo: {maximo_quarteirao}, Média: {media_quarteirao:.2f}, Mediana: {mediana_quarteirao}, Moda: {moda_quarteirao}, Desvio Padrão: {desvio_padrao_quarteirao:.2f}')
+print(f'Setor - Qtd distintos: {qtd_setores}, Moda: {moda_setor}')
+print(f'Quarteirão - Qtd distintos: {qtd_quarteiroes}, Moda: {moda_quarteirao}')
 print(f'CEP - Qtd distintos: {qtd_ceps}, Moda: {moda_cep}')
-print(f'Número do Endereço - Qtd distintos: {qtd_num_enderecos}, Mínimo: {minimo_num_endereco}, Máximo: {maximo_num_endereco}, Moda: {moda_num_endereco}')
+print(f'Número do Endereço - Qtd distintos: {qtd_num_enderecos}, Moda: {moda_num_endereco}')
 print(f'Área Testada - Qtd distintos: {qtd_areas_testadas}, Mínimo: {minimo_area_testada}, Máximo: {maximo_area_testada}, Média: {media_area_testada:.2f}, Mediana: {mediana_area_testada}, Moda: {moda_area_testada}, Desvio Padrão: {desvio_padrao_areas_testadas:.2f}')
 print(f'Área Real - Qtd distintos: {qtd_areas_reais}, Mínimo: {minimo_area_real}, Máximo: {maximo_area_real}, Média: {media_area_real:.2f}, Mediana: {mediana_area_real}, Moda: {moda_area_real}, Desvio Padrão: {desvio_padrao_areas_reais:.2f}')
 print(f'Área Construída - Qtd distintos: {qtd_areas_construidas}, Mínimo: {minimo_area_construida}, Máximo: {maximo_area_construida}, Média: {media_area_construida:.2f}, Mediana: {mediana_area_construida}, Moda: {moda_area_construida}, Desvio Padrão: {desvio_padrao_areas_construidas:.2f}')
